@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      >
+
+    <item
+        android:id="@+id/ic_arrow"
+        android:icon="@drawable/home_24dp"
+        android:title="@string/inicio"
+        />
+
+        <item
+            android:id="@+id/ic_android"
+            android:icon="@drawable/saldo_24dp"
+            android:title="@string/saldo"
+            />
+        <item
+            android:id="@+id/ic_books"
+            android:icon="@drawable/cardapio"
+            android:title="@string/card_pio"
+            />
+        <item
+            android:id="@+id/ic_center_focus"
+            android:icon="@drawable/config"
+            android:title="@string/configura_es"
+            />
+        <item
+            android:id="@+id/ic_backup"
+            android:icon="@drawable/avaliar_24dp"
+            android:title="@string/avaliar"
+            />
+
+
+
+
+</menu>
