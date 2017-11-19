@@ -32,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
 
-        tabLayout.getTabAt(0).setIcon(R.drawable.ic_assignment);
-        tabLayout.getTabAt(1).setIcon(R.drawable.ic_autorenew);
-        tabLayout.getTabAt(2).setIcon(R.drawable.ic_attach_file);
+        tabLayout.getTabAt(0).setIcon(R.drawable.user_24dp);
+        tabLayout.getTabAt(1).setIcon(R.drawable.res_24dp);
+        tabLayout.getTabAt(2).setIcon(R.drawable.nos_24dp);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottomNavView_Bar);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
