@@ -22,13 +22,13 @@
         android:layout_marginBottom="8dp">
 
         <EditText
-            android:id="@+id/editText2"
+            android:id="@+id/numero_cartao"
             android:layout_width="match_parent"
             android:layout_height="38dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Número do cartão"
+            android:hint="Número do cartão"
             android:textAlignment="center"
             android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,13 +37,13 @@
             tools:layout_editor_absoluteY="291dp" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/matricula_siape"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:layout_weight="1"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Matrícula/SIAPE"
+            android:hint="Matrícula/SIAPE"
             android:textAlignment="center"
             android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
@@ -57,7 +57,7 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button4"
+                android:id="@+id/botao_logar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -67,16 +67,27 @@
                 android:textAlignment="center"
                 tools:layout_editor_absoluteX="67dp"
                 tools:layout_editor_absoluteY="342dp" />
+
+            <ProgressBar
+                android:id="@+id/loading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="visible"
+                android:indeterminate="true" >
+            </ProgressBar>
+
         </LinearLayout>
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/logo_ru"
             android:layout_width="match_parent"
             android:layout_height="89dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/ressssss_24dp"
             tools:layout_editor_absoluteX="136dp"
             tools:layout_editor_absoluteY="132dp" />
+
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
