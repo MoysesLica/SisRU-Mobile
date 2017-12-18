@@ -16,7 +16,7 @@ public class SobreAplicativo extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.sobre_restaurante,container,false);
+        View view = inflater.inflate(R.layout.sobre_nos,container,false);
         return view;
     }
 }

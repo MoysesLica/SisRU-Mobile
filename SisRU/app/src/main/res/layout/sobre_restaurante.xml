@@ -11,7 +11,7 @@
         android:textStyle="bold"
         android:text="Bem-vindo ao SisRU"
         android:layout_marginTop="40dp"
-        android:id="@+id/textTab1"
+        android:id="@+id/texto_boas_vindas"
         />
 
 </RelativeLayout>

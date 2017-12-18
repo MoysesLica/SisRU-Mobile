@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -34,6 +35,8 @@ public class TelaLogin extends AppCompatActivity {
     ProgressBar loading;
     ImageView logo_restaurante;
 
+    /*MOSTRA OS ITENS DA TELA*/
+
     public void mostrarItens(){
 
         numero_cartao.setVisibility(View.VISIBLE);
@@ -41,8 +44,12 @@ public class TelaLogin extends AppCompatActivity {
         botao_logar.setVisibility(View.VISIBLE);
         logo_restaurante.setVisibility(View.VISIBLE);
         loading.setVisibility(View.GONE);
+        (findViewById(R.id.label_matricula_siape)).setVisibility(View.VISIBLE);
+        (findViewById(R.id.label_numero_cartao)).setVisibility(View.VISIBLE);
 
     }
+
+    /*ESCONDE OS ITENS DA TELA*/
 
     public void esconderItens(){
 
@@ -51,22 +58,27 @@ public class TelaLogin extends AppCompatActivity {
         botao_logar.setVisibility(View.GONE);
         logo_restaurante.setVisibility(View.GONE);
         loading.setVisibility(View.VISIBLE);
+        (findViewById(R.id.label_matricula_siape)).setVisibility(View.GONE);
+        (findViewById(R.id.label_numero_cartao)).setVisibility(View.GONE);
 
     }
+
+    /*CRIA A TELA (PADRÃO)*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         /*CARREGA O XML DA TELA*/
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tela_login);
 
-        SharedPreferences sharedPref2 = TelaLogin.this.getPreferences(Context.MODE_PRIVATE);
-        int Logado = sharedPref2.getInt("Logado", 0);
+        SharedPreferences dados = getSharedPreferences("Dados", 0);
+        int Logado = dados.getInt("Logado", 0);
 
         if(Logado == 0){
 
-        /*ATRIBUINDO ELEMENTOS XML PARA VARIAVEIS JAVA*/
+            /*ATRIBUINDO ELEMENTOS XML PARA VARIAVEIS JAVA*/
 
             botao_logar = (Button) findViewById(R.id.botao_logar);
             numero_cartao = (EditText) findViewById(R.id.numero_cartao);
@@ -76,7 +88,7 @@ public class TelaLogin extends AppCompatActivity {
 
             loading.setVisibility(View.GONE);
 
-        /*AQUI SUBMETEMOS O LOGIN DO USUÁRIO*/
+            /*AQUI SUBMETEMOS O LOGIN DO USUÁRIO*/
 
             botao_logar.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
@@ -86,7 +98,7 @@ public class TelaLogin extends AppCompatActivity {
                     final String s_numero_cartao = numero_cartao.getText().toString();
                     final String s_matricula_siape = matricula_siape.getText().toString();
 
-                /*AQUI FAZ-SE A VERIFICAÇÃO DA CONEXÃO DE INTERNET DO USUÁRIO*/
+                    /*AQUI FAZ-SE A VERIFICAÇÃO DA CONEXÃO DE INTERNET DO USUÁRIO*/
 
                     ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -95,26 +107,39 @@ public class TelaLogin extends AppCompatActivity {
 
                     if(isConnected){
 
-                /*AQUI SE VERIFICA A ULTIMA VERSÃO DO BANCO DE IMAGENS*/
+                    /*AQUI SE VERIFICA A ULTIMA VERSÃO DO BANCO DE IMAGENS*/
 
-                        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://monitoriacastanhal.ufpa.br/iuri/Teste.php",
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://monitoriacastanhal.ufpa.br/SistemaRU/acao.php",
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
 
-                                        if(response.contains("Logado!")){
+                                        String[] linhas = response.split("\\r?\\n");
+
+                                        if(linhas[0].contains("True")){
+
+                                            SharedPreferences dados2 = getSharedPreferences("Dados", 0);
+
+                                            SharedPreferences.Editor editor = dados2.edit();
+
+                                            editor.putInt("Logado", 1);
+
+                                            String[] linha_nome = linhas[1].split(":");
+
+                                            if(linha_nome[0].contains("Nome do Usuário")){
+
+                                                editor.putString("Nome_Usuario", linha_nome[1]);
+
+                                            }
+
+                                            editor.commit();
 
                                             Intent intent = new Intent(TelaLogin.this, MainActivity.class);
                                             startActivity(intent);
 
-                                            SharedPreferences sharedPref = TelaLogin.this.getPreferences(Context.MODE_PRIVATE);
-                                            SharedPreferences.Editor editor = sharedPref.edit();
-                                            editor.putInt("Logado", 1);
-                                            editor.commit();
-
                                         }else{
 
-                                            alertaBasico(response);
+                                            alertaBasico("Usuário não existe!");
 
                                         }
 
@@ -169,7 +194,6 @@ public class TelaLogin extends AppCompatActivity {
 
     }
 
-
     /*ALERTA BÁSICO*/
 
     public void alertaBasico(String mensagem){
@@ -190,6 +214,5 @@ public class TelaLogin extends AppCompatActivity {
         alert11.show();
 
     }
-
 
 }

@@ -21,35 +21,40 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp">
 
-        <EditText
-            android:id="@+id/numero_cartao"
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/label_numero_cartao"
             android:layout_width="match_parent"
-            android:layout_height="38dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Número do cartão"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteX="18dp"
-            tools:layout_editor_absoluteY="291dp" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/matricula_siape"
+            <EditText
+                android:id="@+id/numero_cartao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Número Cartão"
+                android:padding="7dp"
+                android:maxLength="8"
+                android:background="@drawable/estilo_botoes_edittext"
+                />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/label_matricula_siape"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Matrícula/SIAPE"
-            android:textAlignment="center"
-            android:textColor="#fff"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteX="20dp"
-            tools:layout_editor_absoluteY="234dp" />
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/matricula_siape"
+                android:layout_marginTop="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:hint="Matrícula ou SIAPE"
+                android:padding="7dp"
+                android:maxLength="12"
+                android:background="@drawable/estilo_botoes_edittext"
+                />
+        </android.support.design.widget.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,22 +65,21 @@
                 android:id="@+id/botao_logar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:layout_weight="1"
-                android:background="@drawable/button"
+                android:width="80dp"
+                android:background="@drawable/estilo_botoes_button"
+                android:fontFamily="@font/roboto_medium"
                 android:gravity="center"
+                android:maxWidth="80dp"
+                android:minWidth="80dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
                 android:text="Acessar"
                 android:textAlignment="center"
+                android:textColor="#ffffff"
                 tools:layout_editor_absoluteX="67dp"
                 tools:layout_editor_absoluteY="342dp" />
-
-            <ProgressBar
-                android:id="@+id/loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:visibility="visible"
-                android:indeterminate="true" >
-            </ProgressBar>
 
         </LinearLayout>
 
@@ -88,6 +92,23 @@
             tools:layout_editor_absoluteX="136dp"
             tools:layout_editor_absoluteY="132dp" />
 
+        <ProgressBar
+            android:id="@+id/loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:visibility="visible"
+            android:indeterminate="true"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_centerInParent="true"
+            android:orientation="vertical">
+        </ProgressBar>
+
     </LinearLayout>
+
+
 
 </android.support.constraint.ConstraintLayout>
