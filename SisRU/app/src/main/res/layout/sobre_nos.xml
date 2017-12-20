@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/texto_nos_titulo"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:textSize="15pt"
-        android:textStyle="bold"
-        android:text="Link Jr"
         android:layout_marginTop="40dp"
-        android:id="@+id/texto_nos"
-        />
+        android:text="Desenvolvido por Link Jr Tecnologia Ltda"
+        android:textAlignment="center"
+        android:textSize="12pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/texto_nos_desenvolvedores"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Desenvolvedores:
+Moysés Licá
+Leonardo Wallace
+Fábio
+Raonner"
+        android:textAlignment="center"
+        android:textSize="12pt"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/texto_nos_contato"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Contato:
+linkjrcastanhal@gmail.com"
+        android:textAlignment="center"
+        android:textSize="12pt"
+        android:textStyle="bold" />
 
 </LinearLayout>

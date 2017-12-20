@@ -131,6 +131,8 @@ public class TelaLogin extends AppCompatActivity {
                                                 editor.putString("Nome_Usuario", linha_nome[1]);
 
                                             }
+                                            editor.putString("Numero_Cartao",s_numero_cartao);
+                                            editor.putString("Matricula_Siape",s_matricula_siape);
 
                                             editor.commit();
 
